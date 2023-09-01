@@ -1,0 +1,30 @@
+<div id="home">
+    <div id="backgroundHome"></div>
+
+    <div id="conteudo">
+        <h1 id="title">Cápsula do Tempo</h1>
+
+
+        <div id="roboAssistente">
+            <div id="balaoDeFala">
+                <p>
+                    Aqui a gente trabalha com sonhos, 
+                    e não é sonho pequeno não: é sonho grande!
+
+                    <br><br>Quais os seus sonhos?
+                </p>
+            </div>
+
+            <img src="/CapsulaDoTempo/img/logo.png" id="roboLogo">
+        </div>
+
+
+        <button class="btn" id="buttonComecar">Vamos começar!</button>
+    </div>
+</div>
+
+<script>
+    $("#buttonComecar").on("click", function(){
+        $("#main").load("./pages/apresentacao.html");
+    });
+</script>

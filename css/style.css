@@ -1,0 +1,109 @@
+#backgroundHome,
+#background{
+    background-image: url("https://img.freepik.com/vetores-gratis/fundo-abstrato-aquarela-roxo_23-2149036193.jpg?w=2000");
+    background-color: rgba(255, 255, 255, 0.5);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    width: 100vw;
+    height: 100vh; 
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#conteudo{
+    z-index: 2;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-evenly;
+}
+
+#title{
+    font-weight: bold;
+    color: #6f0082;
+    text-align: center;
+}
+
+
+#roboAssistente{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#roboLogo{
+    max-height: 35vh;
+    margin-top: 30px;
+}
+
+@keyframes upDownAnimation {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+} 
+
+  
+#roboLogo {
+    animation: upDownAnimation 2s infinite; /* Ajuste a duração da animação conforme necessário */
+}
+
+#balaoDeFala {
+    position: relative;
+    width: 90%;
+    padding: 15px;
+    background-color: #7c6c9e;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#balaoDeFala:after{
+    content: "";
+    position: absolute;
+    bottom: -30px; /* Posiciona a seta abaixo do balão */
+    left: 50%; /* Posiciona a seta no centro horizontal */
+    margin-left: -20px;
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent transparent #7c6c9e transparent;
+    transform: rotate(180deg); /* Inverte a seta para apontar para cima */
+}
+
+#balaoDeFala p{
+    color: #fff;
+    font-size: 20px;
+}
+
+#main #home #buttonComecar,
+#main #apresentacao #buttonContinuarCarta,
+#main #instrucoes #buttonIniciarCarta,
+#main #pageTeste #btnEnviarCarta{
+    background-color: #6f0082;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+}
+
+#main #home #buttonComecar:hover,
+#main #apresentacao #buttonContinuarCarta:hover,
+#main #instrucoes #buttonIniciarCarta:hover,
+#main #pageTeste #btnEnviarCarta:hover{
+    background-color: #450052;
+}
+
+#formCarta label{
+    float: left;
+    margin-top: 10px;
+}

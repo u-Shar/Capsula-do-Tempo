@@ -1,0 +1,32 @@
+
+<div id="instrucoes">
+    <div id="background"></div>
+
+    <div id="conteudo">
+        <h1 id="title">Cápsula do Tempo</h1>
+        <div id="roboAssistente">
+            <div id="balaoDeFala">
+                <p>
+                    Pense...<br>
+
+                    Como você vai estar daqui quatro ou cinco meses? <br>
+                    Que sonhos você tem? <br>
+                    Quem você quer ser? <br>
+                    O que você quer realizar <br>
+                    Que objetivos atingiu?
+                </p>
+            </div>
+
+            <img src="/CapsulaDoTempo/img/logo.png" id="roboLogo">
+        </div>
+
+        <button class="btn" id="buttonIniciarCarta">Preencher carta</button>
+    </div>
+</div>
+
+<script>
+    $("#buttonIniciarCarta").on("click", function(){
+        $("#main").load("./pages/form.html");
+        $("#background").css("height", $('body').height());
+    });
+</script>

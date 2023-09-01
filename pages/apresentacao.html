@@ -1,0 +1,32 @@
+<div id="apresentacao">
+    <div id="background"></div>
+
+    <div id="conteudo">
+
+        <h1 id="title">Cápsula do Tempo</h1>
+
+        
+        <div id="roboAssistente">
+            <div id="balaoDeFala">
+                <p>
+                    Vamos escrever uma carta para o seu eu do futuro!
+
+                    O que seu eu do futuro vai sentir quando ler essa carta?
+                </p>
+            </div>
+
+            <img src="/CapsulaDoTempo/img/logo.png" id="roboLogo">
+        </div>
+
+        <button class="btn" id="buttonContinuarCarta">Continuar</button>
+
+    </div>
+</div>
+
+<script>
+    $("#buttonContinuarCarta").on("click", function(){
+        $("#background").css("height", $('#apresentacao').height());
+        $("#main").load("./pages/instrucoes.html");
+    });
+</script>
+
