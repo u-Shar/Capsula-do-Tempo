@@ -46,7 +46,11 @@
         let pergunta1 = $("#pergunta1").val();
         
         if(pergunta1 == ""){
-            alert("Preencha sua resposta!");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Atenção!',
+                text: 'Preencha sua resposta',
+            });
         }else{
             sessionStorage.setItem("Pergunta1", pergunta1);
 

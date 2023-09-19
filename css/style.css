@@ -80,6 +80,7 @@
     width: 80%;
     transform: rotate(-20deg);
     z-index: 1;
+    max-width: 328px;
 }
 
 #tela1 #imgTextoTela1{
@@ -91,6 +92,7 @@
 #tela2 #imgTextoTela2,
 #tela3 #imgTextoTela3{
     width: 95%;
+    max-width: 360px;
 }
 
 #buttonComecar{
@@ -183,6 +185,7 @@
 
 img#imgPergunta{
     width: 80%;
+    max-width: 360px;
 }
 
 #loading {
