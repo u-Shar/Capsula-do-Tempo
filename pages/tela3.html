@@ -1,0 +1,26 @@
+<div id="tela3">
+    <div id="topo"> 
+        <img src="https://u-shar.github.io/Capsula-do-Tempo/img/logo.png" id="roboLogo">
+        <h1 id="titulo">Carta para o Futuro</h1>
+    </div>
+
+    <div id="conteudo">
+        <img src="https://u-shar.github.io/Capsula-do-Tempo/img/papelTela3.png" id="imgTextoTela3">
+    </div>
+
+    <div id="buttons">
+        <button class="btn" id="buttonVoltar">Voltar</button>
+        <button class="btn" id="buttonComecar">Avançar</button>
+    </div>
+</div>
+<script>
+    $("#buttonVoltar").on("click", function(){
+        window.scrollTo(0, 0);
+        $("#main").load("./pages/tela2.html");
+    });
+
+    $("#buttonComecar").on("click", function(){
+        window.scrollTo(0, 0);
+        $("#main").load("./pages/tela4.html");
+    });
+</script>

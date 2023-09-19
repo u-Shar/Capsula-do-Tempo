@@ -1,0 +1,121 @@
+<div id="tela11">
+    <div id="topo"> 
+        <img src="https://u-shar.github.io/Capsula-do-Tempo/img/logo.png" id="roboLogoPerguntas">
+        <h1 id="titulo">Conselhos para o eu do futuro</h1>
+    </div>
+
+    <div id="conteudo">
+        <div id="progressBar">
+            <div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar" style="width: 100%; background-color: #603B8F;">7 / 7</div>
+            </div>
+        </div>
+
+        <img src="https://u-shar.github.io/Capsula-do-Tempo/img/pergunta7.png" id="imgPergunta">
+
+        <form id="formPergunta">
+            <label for="pergunta7">Sua resposta:</label>
+            <textarea id="pergunta7" name="pergunta7" class="form-control"></textarea>
+        </form>
+    </div>
+
+    <div id="buttons">
+        <button class="btn" id="buttonVoltar">Voltar</button>
+        <button class="btn" id="buttonComecar">Enviar Carta</button>
+    </div>
+</div>
+
+<div id="loading"><img src="https://u-shar.github.io/Capsula-do-Tempo/img/loading.svg"></div>    
+
+<script>
+    $(document).ready(function() {
+        let pergunta7 = sessionStorage.getItem("Pergunta7");
+
+        if(pergunta7 != null && pergunta7 != ""){
+            $("#pergunta7").val(pergunta7);
+        }
+    });
+
+    $("#buttonVoltar").on("click", function(){
+        let pergunta7 = $("#pergunta7").val();
+
+        sessionStorage.setItem("Pergunta7", pergunta7);
+
+        window.scrollTo(0, 0);
+        $("#main").load("./pages/tela10.html");
+    });
+
+    $("#buttonComecar").on("click", function(){
+        let pergunta7 = $("#pergunta7").val();
+        
+        if(pergunta7 == ""){
+            alert("Preencha sua resposta!");
+        }else{
+            sessionStorage.setItem("Pergunta7", pergunta7);
+
+            $("#loading").show();
+
+            let data = {};
+            data.nome = sessionStorage.getItem("Nome");
+            data.email = sessionStorage.getItem("Email");
+            data.curso = sessionStorage.getItem("Curso");
+            data.disciplina = sessionStorage.getItem("Disciplina");
+            data.pergunta1 = sessionStorage.getItem("Pergunta1");
+            data.pergunta2 = sessionStorage.getItem("Pergunta2");
+            data.pergunta3 = sessionStorage.getItem("Pergunta3");
+            data.pergunta4 = sessionStorage.getItem("Pergunta4");
+            data.pergunta5 = sessionStorage.getItem("Pergunta5");
+            data.pergunta6 = sessionStorage.getItem("Pergunta6");
+            data.pergunta7 = sessionStorage.getItem("Pergunta7");
+
+            const formData = new FormData();
+            formData.set('entry.1441168353', data.nome); 
+            formData.set('entry.235062205', data.email); 
+            formData.set('entry.1178915774', data.curso); 
+            formData.set('entry.74494594', data.disciplina); 
+            formData.set('entry.1669462136', data.pergunta1); 
+            formData.set('entry.1862170494', data.pergunta2); 
+            formData.set('entry.235297909', data.pergunta3); 
+            formData.set('entry.1063656997', data.pergunta4); 
+            formData.set('entry.283053735', data.pergunta5); 
+            formData.set('entry.808059592', data.pergunta6); 
+            formData.set('entry.2110591751', data.pergunta7); 
+
+            let dataHoje = new Date();
+            let dia = dataHoje.getDate();
+            let mes = dataHoje.getMonth() + 1;
+            let ano = dataHoje.getFullYear();
+            let hora = dataHoje.getHours()
+            let minuto = dataHoje.getMinutes()
+
+            formData.set('entry.906898823_day', dia);
+            formData.set('entry.906898823_month', mes);
+            formData.set('entry.906898823_year', ano);
+            formData.set('entry.2021237182_hour', hora);
+            formData.set('entry.2021237182_minute', minuto);
+
+            const url = 'https://docs.google.com/forms/d/e/1FAIpQLSfBst1hODEZbXpC4ptHOKZX_-EbkUy4VP7_nZbkJDV-wKfQgQ/formResponse';
+            fetch(url, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            })
+            .then(response => {
+                $("#loading").hide();
+                $("#main").load("./pages/tela12.html");
+            })
+            .catch(error => {
+                $("#loading").hide();
+
+                Swal.fire({
+                    title: 'Ops...',
+                    text: 'Houve um erro ao processar sua carta',
+                    icon: 'error',
+                    confirmButtonText: 'Tenter novamente'
+                }).then(function(){
+                    $("#main").load("./pages/tela11.html");
+                })
+            });
+        }
+    });
+</script>

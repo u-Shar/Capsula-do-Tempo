@@ -1,0 +1,57 @@
+<div id="tela7">
+    <div id="topo"> 
+        <img src="https://u-shar.github.io/Capsula-do-Tempo/img/logo.png" id="roboLogoPerguntas">
+        <h1 id="titulo">Quais seus valores e crenças?</h1>
+    </div>
+
+    <div id="conteudo">
+        <div id="progressBar">
+            <div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar" style="width: 42.85%; background-color: #603B8F;">3 / 7</div>
+            </div>
+        </div>
+
+        <img src="https://u-shar.github.io/Capsula-do-Tempo/img/pergunta3.png" id="imgPergunta">
+
+        <form id="formPergunta">
+            <label for="pergunta3">Sua resposta:</label>
+            <textarea id="pergunta3" name="pergunta3" class="form-control"></textarea>
+        </form>
+    </div>
+
+    <div id="buttons">
+        <button class="btn" id="buttonVoltar">Voltar</button>
+        <button class="btn" id="buttonComecar">Avançar</button>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        let pergunta3 = sessionStorage.getItem("Pergunta3");
+
+        if(pergunta3 != null && pergunta3 != ""){
+            $("#pergunta3").val(pergunta3);
+        }
+    });
+
+    $("#buttonVoltar").on("click", function(){
+        let pergunta3 = $("#pergunta3").val();
+
+        sessionStorage.setItem("Pergunta3", pergunta3);
+
+        window.scrollTo(0, 0);
+        $("#main").load("./pages/tela6.html");
+    });
+
+    $("#buttonComecar").on("click", function(){
+        let pergunta3 = $("#pergunta3").val();
+        
+        if(pergunta3 == ""){
+            alert("Preencha sua resposta!");
+        }else{
+            sessionStorage.setItem("Pergunta3", pergunta3);
+
+            window.scrollTo(0, 0);
+            $("#main").load("./pages/tela8.html");
+        }
+    });
+</script>

@@ -1,0 +1,102 @@
+<div id="tela4">
+    <div id="topo"> 
+        <img src="https://u-shar.github.io/Capsula-do-Tempo/img/logo.png" id="roboLogo">
+        <h1 id="titulo">Carta para o Futuro</h1>
+    </div>
+
+    <div id="conteudo">
+        <p id="desc1">Nós vamos te enviar sua carta ao final do curso de MBA e para isso precisamos de saber para quem e onde enviamos este tesouro.</p>
+
+        <form id="formDadosPessoais">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" class="form-control"> 
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" class="form-control"> 
+
+            <label for="curso">Curso:</label>
+            <select id="curso" name="curso" class="form-select">
+                <option value="" selected disabled>Selecione seu curso</option>
+                <option value="curso1">Curso 1</option>
+                <option value="curso2">Curso 2</option>
+                <option value="curso3">Curso 3</option>
+            </select>
+
+            <label for="disciplina">Disciplina:</label>
+            <select id="disciplina" name="disciplina" class="form-select">
+                <option value="" selected disabled>Selecione a disciplina</option>
+                <option value="disciplina1">Disciplina 1</option>
+                <option value="disciplina2">Disciplina 2</option>
+                <option value="disciplina3">Disciplina 3</option>
+            </select>
+        </form>
+
+        <p id="desc2">PS.: É importante dizer que não vamos ler a sua carta. Ela será transformada em um PDF e será enviada automaticamente para seu e-mail</p>
+
+    </div>
+
+    <div id="buttons">
+        <button class="btn" id="buttonVoltar">Voltar</button>
+        <button class="btn" id="buttonComecar">Iniciar Carta</button>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        let nome = sessionStorage.getItem("Nome");
+        let email = sessionStorage.getItem("Email");
+        let curso = sessionStorage.getItem("Curso");
+        let disciplina = sessionStorage.getItem("Disciplina");
+
+        if(nome != null && nome != ""){
+            $("#nome").val(nome);
+        }
+
+        if(email != null && email != ""){
+            $("#email").val(email);
+        }
+
+        if(curso != null && curso != ""){
+            $("#curso").val(curso);
+            $("#curso").trigger("change");
+        }
+
+        if(disciplina != null && disciplina != ""){
+            $("#disciplina").val(disciplina);
+            $("#curso").trigger("change");
+        }
+    });
+
+    $("#buttonVoltar").on("click", function(){
+        let nome = $("#nome").val();
+        let email = $("#email").val();
+        let curso = $("#curso").val();
+        let disciplina = $("#disciplina").val();
+
+        sessionStorage.setItem("Nome", nome);
+        sessionStorage.setItem("Email", email);
+        sessionStorage.setItem("Curso", curso);
+        sessionStorage.setItem("Disciplina", disciplina);
+
+        window.scrollTo(0, 0);
+        $("#main").load("./pages/tela3.html");
+    });
+
+    $("#buttonComecar").on("click", function(){
+        let nome = $("#nome").val();
+        let email = $("#email").val();
+        let curso = $("#curso").val();
+        let disciplina = $("#disciplina").val();
+        
+        if(nome == "" || email == "" || curso == null || disciplina == null){
+            alert("Preencha todos os campos!");
+        }else{
+            sessionStorage.setItem("Nome", nome);
+            sessionStorage.setItem("Email", email);
+            sessionStorage.setItem("Curso", curso);
+            sessionStorage.setItem("Disciplina", disciplina);
+
+            window.scrollTo(0, 0);
+            $("#main").load("./pages/tela5.html");
+        }
+    });
+</script>
