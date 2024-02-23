@@ -18,12 +18,37 @@
             <select id="curso" name="curso" class="form-select">
                 <option value="" selected disabled>Selecione seu curso</option>
                 <option value="MBA FESA Ago. 2023 - Dez. 2024">MBA FESA Ago. 2023 - Dez. 2024</option>
+                <option value="FEI - Administração">FEI - Administração</option>
             </select>
 
             <label for="disciplina">Disciplina:</label>
             <select id="disciplina" name="disciplina" class="form-select">
                 <option value="" selected disabled>Selecione a disciplina</option>
                 <option value="Inovação e Problemas Ambientais">Inovação e Problemas Ambientais</option>
+                <option value="SIG">SIG</option>
+            </select>
+
+            <label for="mesFormacao">Mês de Formação:</label>
+            <select id="mesFormacao" name="mesFormacao" class="form-select">
+                <option value="" disabled selected>Selecione o Mês de Formação</option>
+                <option value='1'>Janeiro</option>
+                <option value='2'>Fevereiro</option>
+                <option value='3'>Março</option>
+                <option value='4'>Abril</option>
+                <option value='5'>Maio</option>
+                <option value='6'>Junho</option>
+                <option value='7'>Julho</option>
+                <option value='8'>Agosto</option>
+                <option value='9'>Setembro</option>
+                <option value='10'>Outubro</option>
+                <option value='11'>Novembro</option>
+                <option value='12'>Dezembro</option>
+            </select>
+
+            <label for="anoFormacao">Ano de Formação:</label>
+            <select id="anoFormacao" name="anoFormacao" class="form-select">
+                <option value="" disabled selected>Selecione o Ano de Formação</option>
+
             </select>
         </form>
 
@@ -42,6 +67,15 @@
         let email = sessionStorage.getItem("Email");
         let curso = sessionStorage.getItem("Curso");
         let disciplina = sessionStorage.getItem("Disciplina");
+        let anoFormacao = sessionStorage.getItem("AnoFormacao");
+        let mesFormacao = sessionStorage.getItem("MesFormacao");
+
+        let dataAtual = new Date();
+        let anoAtual = dataAtual.getFullYear();
+
+        for(let i = 0; i <= 6; i++){
+            $("#anoFormacao").append(`<option value="${anoAtual + i}">${anoAtual + i}</option>`);
+        }
 
         if(nome != null && nome != ""){
             $("#nome").val(nome);
@@ -58,7 +92,17 @@
 
         if(disciplina != null && disciplina != ""){
             $("#disciplina").val(disciplina);
-            $("#curso").trigger("change");
+            $("#disciplina").trigger("change");
+        }
+
+        if(mesFormacao != null && mesFormacao != ""){
+            $("#mesFormacao").val(mesFormacao);
+            $("#mesFormacao").trigger("change");
+        }
+
+        if(anoFormacao != null && anoFormacao != ""){
+            $("#anoFormacao").val(anoFormacao);
+            $("#anoFormacao").trigger("change");
         }
     });
 
@@ -67,11 +111,15 @@
         let email = $("#email").val();
         let curso = $("#curso").val();
         let disciplina = $("#disciplina").val();
+        let anoFormacao = $("#anoFormacao").val();
+        let mesFormacao = $("#mesFormacao").val();
 
         sessionStorage.setItem("Nome", nome);
         sessionStorage.setItem("Email", email);
         sessionStorage.setItem("Curso", curso);
         sessionStorage.setItem("Disciplina", disciplina);
+        sessionStorage.setItem("MesFormacao", mesFormacao);
+        sessionStorage.setItem("AnoFormacao", anoFormacao);
 
         window.scrollTo(0, 0);
         $("#main").load("./pages/tela3.html");
@@ -82,8 +130,10 @@
         let email = $("#email").val();
         let curso = $("#curso").val();
         let disciplina = $("#disciplina").val();
+        let anoFormacao = $("#anoFormacao").val();
+        let mesFormacao = $("#mesFormacao").val();
         
-        if(nome == "" || email == "" || curso == null || disciplina == null){
+        if(nome == "" || email == "" || curso == null || disciplina == null || anoFormacao == null || mesFormacao == null){
             Swal.fire({
                 icon: 'warning',
                 title: 'Atenção!',
@@ -94,6 +144,8 @@
             sessionStorage.setItem("Email", email);
             sessionStorage.setItem("Curso", curso);
             sessionStorage.setItem("Disciplina", disciplina);
+            sessionStorage.setItem("MesFormacao", mesFormacao);
+            sessionStorage.setItem("AnoFormacao", anoFormacao);
 
             window.scrollTo(0, 0);
             $("#main").load("./pages/tela5.html");
